@@ -6,10 +6,14 @@ import "dotenv/config";
 const app = express();
 const port = Number(process.env.PORT) || 4000;
 
+//
+console.log("project run");
+
 // init api
 initApi().then(() => {
-  app.use("/api", api);
   console.log("API is ready");
+  app.use("/api", api);
+
   // Front end
   app.use("/static", express.static("src/static"));
   app.use(express.static("src/view"));

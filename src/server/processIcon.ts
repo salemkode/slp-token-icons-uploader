@@ -90,8 +90,7 @@ async function sendRequest() {
   // Replace space with -
   // Space not work in branch name
   let branch = await setBranchName(name);
-  let message =
-    `add ${name} token` + "\n \n Test of http://flipstarter.salemkode.com/";
+  let message = `add ${name} token`;
 
   // Push icon of slp taq   oken in own repo
   await git
@@ -150,6 +149,7 @@ export async function processIcon(icon?: slpIcon) {
   } catch (error) {
     removeIcon();
     console.error(error);
+    throw error;
   }
 }
 
