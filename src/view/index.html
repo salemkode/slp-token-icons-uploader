@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head data-theme="dark">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@1.4.4/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="static/css/home.css" />
+    <script src="static/js/home.js" defer></script>
+
+    <title>Slp icon uploader</title>
+  </head>
+
+  <body>
+    <div class="row">
+      <img src=" static/image/landing.jpg" class="landing-image" />
+      <div class="cover"></div>
+      <div style="display: flex">
+        <form
+          autocomplete="off"
+          style="margin: auto"
+          class="container-fluid"
+          action="api/upload"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <h3>Easy Way to upload slp token icon</h3>
+
+          <!-- Name input -->
+          <label for="name">Name of token</label>
+          <input type="text" placeholder="Ex: honk" name="name" id="name" />
+
+          <!-- Txid input -->
+          <label for="txid"> Txid of the token (aka token id)</label>
+          <input
+            type="text"
+            placeholder="Ex: 7f8889682d57369ed0e32336f8b7e0ffec625a35cca183f4e81fde4e71a538a1"
+            name="txid"
+            id="txid"
+          />
+
+          <!-- Icon input -->
+          <label for="icon">Icon of token</label>
+          <input type="file" name="icon" id="icon" />
+
+          <!-- Error -->
+          <article id="data" style="display: none; padding: 5px 15px"></article>
+
+          <!-- Submit-->
+          <button type="submit" id="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+html,
+body,
+.row {
+  height: 100%;
+}
+
+.row {
+  display: flex;
+}
+
+.row > * {
+  width: 50%;
+}
+.row .cover {
+  display: none;
+}
+.row .landing-image {
+  object-fit: cover;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  height: max-content;
+}
+
+[type="file"] {
+  margin: 0 !important;
+}
+
+.alert {
+  background: #d5a106;
+  color: black;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+  .row form {
+    width: 75%;
+  }
+  .row .landing-image {
+    width: 25%;
+  }
+}
+
+@media (max-width: 600px) {
+  .row {
+    position: relative;
+    background: url(/static/image/landing.jpg) center;
+    background-size: cover;
+  }
+  .row form {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  .row .cover {
+    position: absolute;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--background-color);
+    opacity: 0.9;
+  }
+  .row .landing-image {
+    display: none;
+  }
+}

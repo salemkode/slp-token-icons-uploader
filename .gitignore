@@ -1,0 +1,5 @@
+/repo/
+/node_modules/
+/build
+/cache
+.env
