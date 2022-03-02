@@ -1,31 +1,51 @@
 let form = document.forms[0];
-let data = document.querySelector("#data");
-let submit = document.querySelector("#submit");
+let submitButton = document.querySelector("#submit");
+let recaptchaInput = document.querySelector("#recaptcha");
+let messageElement = document.querySelector("#message");
 
+function recaptcha() {
+  submitButton.disabled = false;
+}
+
+//
 form.onsubmit = async function (event) {
   event.preventDefault();
+  try {
+    loadingSubmit(true);
 
-  submit.setAttribute("aria-busy", true);
-  let respon = await fetch("api/upload", {
-    method: "post",
-    body: new FormData(form),
-  });
+    let respon = await fetch("api/upload", {
+      method: "post",
+      body: new FormData(form),
+    });
 
-  let json = await respon.json();
+    let { errors, message, url } = await respon.json();
 
-  if (Array.isArray(json.error)) {
-    let errors = json.error
-      .map((error) => {
-        return `<li>${error}</li>`;
-      })
-      .join("");
+    if (errors) {
+      messageElement.innerHTML = "<h6>Solve the problems first</h6>";
+      errors.forEach((error) => {
+        messageElement.innerHTML += `<li>${error}</li>`;
+      });
+    } else {
+      messageElement.innerHTML = message;
 
-    data.innerHTML = errors;
-  } else {
-    data.innerHTML = json.message;
-    json.url && (data.innerHTML += ` <a href="${json.url}">${json.url}</a>`);
+      //
+      if (url) messageElement.innerHTML += ` <a href="${url}">${url}</a>`;
+    }
+  } catch (error) {
+    // show error
+    messageElement.innerHTML += error.message;
   }
-  data.style.display = "block";
-  submit.setAttribute("aria-busy", false);
-  console.log(json);
+
+  messageElement.style.display = "block";
+  loadingSubmit(false);
+
+  // Reset values
+  form.reset();
+  grecaptcha.reset();
 };
+
+//
+function loadingSubmit(loading) {
+  // set loading of submit button
+  submitButton.setAttribute("aria-busy", String(loading));
+}

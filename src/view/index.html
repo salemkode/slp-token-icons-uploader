@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head data-theme="dark">
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,6 @@
       href="https://unpkg.com/@picocss/pico@1.4.4/css/pico.min.css"
     />
     <link rel="stylesheet" href="static/css/home.css" />
-    <script src="static/js/home.js" defer></script>
 
     <title>Slp icon uploader</title>
   </head>
@@ -23,8 +22,6 @@
           autocomplete="off"
           style="margin: auto"
           class="container-fluid"
-          action="api/upload"
-          method="post"
           enctype="multipart/form-data"
         >
           <h3>Easy Way to upload slp token icon</h3>
@@ -47,12 +44,23 @@
           <input type="file" name="icon" id="icon" />
 
           <!-- Error -->
-          <article id="data" style="display: none; padding: 5px 15px"></article>
+          <div id="message" style="display: none; padding: 15px 15px"></div>
+
+          <!-- Recaptcha-->
+          <div
+            class="g-recaptcha"
+            style="margin: 10px auto"
+            data-callback="recaptcha"
+            data-sitekey="6Lfn0aseAAAAAPyMljyLN-dp7K3A_XwSJeRdS9Wc"
+          ></div>
 
           <!-- Submit-->
-          <button type="submit" id="submit">Submit</button>
+          <button id="submit" onclick="submit" disabled>submit</button>
         </form>
       </div>
     </div>
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="static/js/home.js"></script>
   </body>
 </html>

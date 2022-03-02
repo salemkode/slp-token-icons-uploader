@@ -24,6 +24,7 @@ import axios, { AxiosResponse } from "axios";
 async function formValidate(
   name: string,
   txid: string,
+  recaptcha: string,
   icon: { path: string }
 ) {
   let errors: string[] = [];
@@ -33,8 +34,15 @@ async function formValidate(
 
   let txidSchema = string()
     .required("Txid is a required field")
-    .matches(/^(\S+$)/, "Txid field cannot contain only blankspaces")
+    .matches(/^(\S+$)/, "Txid field cannot contain blankspaces")
+    .test("", "Txid is exists", (txid) => {
+      return !fs.existsSync(`cache/repo/original/${txid}.png`);
+    })
     .test("", "No slp token with this Txid", isValidateSlpTxid);
+
+  let recaptchaSchema = await string()
+    .required("recaptcha is empty")
+    .test("", "recaptcha is not work", isValidateRecaptcha);
 
   let iconSchema = object({
     path: string()
@@ -47,6 +55,10 @@ async function formValidate(
 
   await txidSchema.validate(txid).catch((error) => errors.push(error.message));
 
+  await recaptchaSchema
+    .validate(recaptcha)
+    .catch((error) => errors.push(error.message));
+
   await iconSchema.validate(icon).catch((error) => errors.push(error.message));
 
   if (errors.length == 0) {
@@ -54,6 +66,20 @@ async function formValidate(
   } else {
     return errors;
   }
+}
+
+//
+async function isValidateRecaptcha(token: string) {
+  type validateToken = {
+    success: true | false; // whether this request was a valid reCAPTCHA token for your site
+  };
+
+  // validate Token
+  let { data }: AxiosResponse<validateToken> = await axios.get(
+    `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RE_CAPTCHA_KEY}&response=${token}`
+  );
+
+  return data.success;
 }
 
 //
@@ -111,9 +137,9 @@ async function upload({ file, body }: Request, res: Response) {
       message: "No data",
     });
   }
-  let { name, txid } = body;
+  let { name, txid, "g-recaptcha-response": recaptcha } = body;
 
-  let validate = await formValidate(name, txid, file);
+  let validate = await formValidate(name, txid, recaptcha, file);
 
   if (validate !== true) {
     if (file) {
@@ -121,7 +147,7 @@ async function upload({ file, body }: Request, res: Response) {
       fs.unlinkSync(file.path);
     }
     return res.status(502).send({
-      error: validate,
+      errors: validate,
     });
   }
 
