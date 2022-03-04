@@ -38,7 +38,7 @@ form.onsubmit = async function (event) {
     }
   } catch (error) {
     // show error
-    messageElement.innerHTML += error.message;
+    messageElement.innerHTML = error.message;
   }
 
   messageElement.style.display = "block";
