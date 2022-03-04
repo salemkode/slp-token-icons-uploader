@@ -29,7 +29,12 @@ form.onsubmit = async function (event) {
       messageElement.innerHTML = message;
 
       //
-      if (url) messageElement.innerHTML += ` <a href="${url}">${url}</a>`;
+      if (url) {
+        messageElement.innerHTML += ` <a href="${url}">${url}</a>`;
+
+        //
+        form.reset();
+      }
     }
   } catch (error) {
     // show error
@@ -40,7 +45,6 @@ form.onsubmit = async function (event) {
   loadingSubmit(false);
 
   // Reset values
-  form.reset();
   grecaptcha.reset();
 };
 
