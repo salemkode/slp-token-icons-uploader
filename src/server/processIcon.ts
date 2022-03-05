@@ -106,7 +106,7 @@ async function sendRequest() {
     head: "slpkode:" + branch,
     base: "master",
     title: message,
-    body: "Power by http://flipstarter.salemkode.com/",
+    body: "This process was done in an automated through a website https://slp-icons-uploader.salemkode.com/",
   });
 
   return response.data.html_url;
