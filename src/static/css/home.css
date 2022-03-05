@@ -11,9 +11,6 @@ body,
 .row > * {
   width: 50%;
 }
-.row .cover {
-  display: none;
-}
 .row .landing-image {
   object-fit: cover;
 }
@@ -58,27 +55,8 @@ body,
 }
 
 @media (max-width: 600px) {
-  .row {
-    position: relative;
-    background: url(/static/image/landing.jpg) center;
-    background-size: cover;
-  }
   .row .form-container {
     width: 100%;
-    position: relative;
-    z-index: 2;
-  }
-  .row .cover {
-    position: absolute;
-    z-index: 1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: var(--background-color);
-    opacity: 0.9;
-  }
-  [data-theme="light"] .row .cover {
-    opacity: 0.8;
   }
   .row .landing-image {
     display: none;
