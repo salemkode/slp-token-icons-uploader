@@ -24,7 +24,7 @@ let git: SimpleGit;
 type slpIcon = {
   path: string;
   name: string;
-  owner?: string;
+  message?: string;
   txid: string;
 };
 const processes: slpIcon[] = [];
@@ -85,27 +85,26 @@ async function setBranchName(_name: string) {
 
 //
 async function sendRequest() {
-  let { name, owner } = processes[0];
-  let body = "";
+  let { name, message, txid } = processes[0];
+  let bodyArray = [`Name: ${name}`, `Token id: ${txid}`];
   name = name.trim();
 
   // Add token admin name if he available
-  if (owner) {
-    body += `Token Administrator: ${name}`;
-    body += "<br>";
+  if (message) {
+    bodyArray.push(`Message:`, message);
   }
 
-  body += "This process was done in an automated through a website https://slp-icons-uploader.salemkode.com/"
+  bodyArray.push("This process was done in an automated through a website https://slp-icons-uploader.salemkode.com/");
+
   // Replace space with -
   // Space not work in branch name
   let branch = await setBranchName(name);
-  let message = `add ${name} token`;
 
-  // Push icon of slp taq   oken in own repo
+  // Push icon of slp token in own repo
   await git
     .checkoutBranch(branch, "master")
     .add("./*")
-    .commit(message, "*")
+    .commit(`add ${name} token`, "*")
     .push("origin", branch);
 
   // Push pull request to https://github.com/kosinusbch/slp-token-icons
@@ -115,7 +114,7 @@ async function sendRequest() {
     head: "slpkode:" + branch,
     base: "master",
     title: message,
-    body,
+    body: bodyArray.join("<br>"),
   });
 
   return response.data.html_url;
