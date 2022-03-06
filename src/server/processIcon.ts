@@ -44,8 +44,8 @@ async function selectMaster() {
   await git
     .checkout("master")
     .fetch("upstream", "master")
-    .mergeFromTo("upstream/master", "origin/master", { "--rebase": "true" })
-    .push(["-u", "origin", "master"]);
+    .pull("upstream", "master")
+    .push(["-f", "origin", "master"]);
 }
 
 //
