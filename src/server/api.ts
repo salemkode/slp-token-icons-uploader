@@ -137,7 +137,7 @@ async function upload({ file, body }: Request, res: Response) {
       message: "No data",
     });
   }
-  let { name, txid, "g-recaptcha-response": recaptcha } = body;
+  let { name, txid, "g-recaptcha-response": recaptcha, owner } = body;
 
   let validate = await formValidate(name, txid, recaptcha, file);
 
@@ -155,6 +155,7 @@ async function upload({ file, body }: Request, res: Response) {
   let pullRequest = await processIcon({
     name,
     txid,
+    owner,
     path: file.path,
   });
 

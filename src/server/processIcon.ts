@@ -24,6 +24,7 @@ let git: SimpleGit;
 type slpIcon = {
   path: string;
   name: string;
+  owner?: string;
   txid: string;
 };
 const processes: slpIcon[] = [];
@@ -84,9 +85,17 @@ async function setBranchName(_name: string) {
 
 //
 async function sendRequest() {
-  // Remove space from " name " to "name"
-  let name = processes[0].name.trim();
+  let { name, owner } = processes[0];
+  let body = "";
+  name = name.trim();
 
+  // Add token admin name if he available
+  if (owner) {
+    body += `Token Administrator: ${name}`;
+    body += "<br>";
+  }
+
+  body += "This process was done in an automated through a website https://slp-icons-uploader.salemkode.com/"
   // Replace space with -
   // Space not work in branch name
   let branch = await setBranchName(name);
@@ -106,7 +115,7 @@ async function sendRequest() {
     head: "slpkode:" + branch,
     base: "master",
     title: message,
-    body: "This process was done in an automated through a website https://slp-icons-uploader.salemkode.com/",
+    body,
   });
 
   return response.data.html_url;
