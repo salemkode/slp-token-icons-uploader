@@ -1,7 +1,7 @@
 let form = document.forms[0];
 let submitButton = document.querySelector("#submit");
 let recaptchaInput = document.querySelector("#recaptcha");
-let messageElement = document.querySelector("#message");
+let outputElement = document.querySelector("#output");
 
 function recaptcha() {
   submitButton.disabled = false;
@@ -21,16 +21,16 @@ form.onsubmit = async function (event) {
     let { errors, message, url } = await respon.json();
 
     if (errors) {
-      messageElement.innerHTML = "<h6>Solve the problems first</h6>";
+      outputElement.innerHTML = "<h6>Solve the problems first</h6>";
       errors.forEach((error) => {
-        messageElement.innerHTML += `<li>${error}</li>`;
+        outputElement.innerHTML += `<li>${error}</li>`;
       });
     } else {
-      messageElement.innerHTML = message;
+      outputElement.innerHTML = message;
 
       //
       if (url) {
-        messageElement.innerHTML += ` <a href="${url}">${url}</a>`;
+        outputElement.innerHTML += ` <a href="${url}">${url}</a>`;
 
         //
         form.reset();
@@ -38,10 +38,10 @@ form.onsubmit = async function (event) {
     }
   } catch (error) {
     // show error
-    messageElement.innerHTML = error.message;
+    outputElement.innerHTML = error.message;
   }
 
-  messageElement.style.display = "block";
+  outputElement.style.display = "block";
   loadingSubmit(false);
 
   // Reset values
