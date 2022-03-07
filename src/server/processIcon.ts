@@ -114,7 +114,7 @@ async function sendRequest() {
     head: "slpkode:" + branch,
     base: "master",
     title: message,
-    body: bodyArray.join("<br>"),
+    body: bodyArray.join("<br><br>"),
   });
 
   return response.data.html_url;
