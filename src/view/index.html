@@ -1,75 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@picocss/pico@1.4.4/css/pico.min.css"
-    />
-    <link rel="stylesheet" href="static/css/home.css" />
 
-    <title>Slp icon uploader</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.4.4/css/pico.min.css" />
+  <link rel="stylesheet" href="static/css/home.css" />
 
-  <body>
-    <div class="row">
-      <img src=" static/image/landing.jpg" class="landing-image" />
-      <div class="form-container">
-        <form
-          autocomplete="off"
-          style="margin: auto"
-          class="container-fluid"
-          enctype="multipart/form-data"
-        >
-          <h3>Easy Way to upload slp token icon (Beta)</h3>
+  <title>Slp icon uploader</title>
+</head>
 
-          <!-- Name input -->
-          <label for="name">Name of token</label>
-          <input type="text" placeholder="Ex: honk" name="name" id="name" />
+<body>
+  <div class="row">
+    <img src="static/image/landing.jpg" class="landing-image" />
+    <div class="form-container" id="formContainer">
+      <!-- form section -->
+      <form class="form container-fluid" enctype="multipart/form-data">
+        <h3>Easy Way to upload slp token icon (Beta)</h3>
 
-          <!-- Txid input -->
-          <label for="txid"> Txid of the token (aka token id)</label>
-          <input
-            type="text"
-            placeholder="Ex: 7f8889682d57369ed0e32336f8b7e0ffec625a35cca183f4e81fde4e71a538a1"
-            name="txid"
-            id="txid"
-          />
+        <!-- Name input -->
+        <label for="name">Name of token</label>
+        <input type="text" placeholder="Ex: honk" name="name" id="name" />
 
-          <!-- Token message input -->
-          <label for="message"> Leave a message - optional </label>
-          <textarea
-            name="message"
-            placeholder="You can put contact information and details about the project"
-            id="message"
-            cols="30"
-            rows="2"
-          ></textarea>
+        <!-- Txid input -->
+        <label for="txid"> Txid of the token (aka token id)</label>
+        <input type="text" placeholder="Ex: 7f8889682d57369ed0e32336f8b7e0ffec625a35cca183f4e81fde4e71a538a1"
+          name="txid" id="txid" />
 
-          <!-- Icon input -->
-          <label for="icon">Icon of token</label>
-          <input type="file" name="icon" id="icon" />
+        <!-- Token message input -->
+        <label for="message"> Leave a message - optional </label>
+        <textarea name="message" placeholder="You can put contact information and details about the project"
+          id="message" cols="30" rows="2"></textarea>
 
-          <!-- Error -->
-          <div id="output" style="display: none; padding: 15px 15px"></div>
+        <!-- Icon input -->
+        <label for="icon">Icon of token</label>
+        <input type="file" name="icon" id="icon" />
 
-          <!-- Recaptcha-->
-          <div
-            class="g-recaptcha"
-            style="margin: 10px auto"
-            data-callback="recaptcha"
-            data-sitekey="6Lfn0aseAAAAAPyMljyLN-dp7K3A_XwSJeRdS9Wc"
-          ></div>
+        <!-- Error -->
+        <div id="output" style="display: none; padding: 15px 15px"></div>
 
-          <!-- Submit-->
-          <button id="submit" onclick="submit" disabled>submit</button>
-        </form>
+        <!-- Recaptcha-->
+        <div class="g-recaptcha" style="margin: 10px auto" data-callback="recaptcha"
+          data-sitekey="6Lfn0aseAAAAAPyMljyLN-dp7K3A_XwSJeRdS9Wc"></div>
+
+        <!-- Submit-->
+        <button id="submit" onclick="submit" disabled>submit</button>
+      </form>
+
+      <!-- padding section -->
+      <div class="padding-section none" id="paddingSection">
+        <h6> Uploading </h6>
+        <span href="#" aria-busy="true">
+          <span id="waitingMessage">loading</span>, please wait…
+        </span>
+        <div>
+          you will find a pull request in after process complete
+          <a href="https://github.com/kosinusbch/slp-token-icons/pull">https://github.com/kosinusbch/slp-token-icons/pull</a>
+        </d>
+      </div>
+
+      <!-- complete section -->
+      <div class="complete-section none" id="completeSection">
+        <img src="/static/image/done.svg" alt="" />
+        <h3>Complete resize and upload</h3>
       </div>
     </div>
+  </div>
 
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script src="static/js/home.js"></script>
-  </body>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+  <script src="https://unpkg.com/socket.io@4.4.1/client-dist/socket.io.min.js"></script>
+  <script src="static/js/home.js"></script>
+</body>
+
 </html>

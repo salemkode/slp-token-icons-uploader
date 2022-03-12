@@ -11,6 +11,7 @@ body,
 .row > * {
   width: 50%;
 }
+
 .row .landing-image {
   object-fit: cover;
 }
@@ -21,12 +22,29 @@ body,
   overflow-y: auto;
   padding: 30px 0;
 }
-.form-container form {
+
+.form-container > * {
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow-y: auto;
   height: max-content;
+}
+
+.form-container .padding-section{
+  height: 100%;
+  cursor: progress;
+  justify-content: space-between;
+}
+
+.form-container > div {
+  margin: auto;
+  text-align: center;
+}
+
+.form-container > div img {
+  margin: 10px auto;
+  width: 70%;
 }
 
 [type="file"] {
@@ -61,4 +79,8 @@ body,
   .row .landing-image {
     display: none;
   }
+}
+
+.none {
+  display: none;
 }

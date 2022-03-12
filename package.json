@@ -5,13 +5,20 @@
   "main": "src/index.ts",
   "dependencies": {
     "@octokit/rest": "^18.12.0",
+    "@types/body-parser": "^1.19.2",
+    "@types/debug": "^4.1.7",
     "axios": "^0.26.0",
+    "debug": "^4.3.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "express-validator": "^6.14.0",
     "multer": "^1.4.4",
+    "ranidb": "git+https://github.com/waseeld/ranidb.git",
     "sharp": "^0.30.1",
     "simple-git": "^3.2.6",
+    "socket.io": "^4.4.1",
     "typescript": "^4.5.5",
+    "ws": "^8.5.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
