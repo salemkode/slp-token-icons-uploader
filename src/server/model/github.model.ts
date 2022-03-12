@@ -1,4 +1,5 @@
 import { Octokit } from "@octokit/rest";
+import Env from "./env.model";
 
 // Init github api
 const octokit = new Octokit({
@@ -25,7 +26,7 @@ export async function createPullRequest(
 
   // Push footer of body
   bodyArray.push(
-    "This process was done in an automated through a website https://slp-icons-uploader.salemkode.com/"
+    `This process was done in an automated through a website ${Env.URL}`
   );
 
   // Push pull request to https://github.com/kosinusbch/slp-token-icons
