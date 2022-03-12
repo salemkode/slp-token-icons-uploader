@@ -24,12 +24,15 @@ export async function pushBranch(git: SimpleGit, branch: string) {
    * git add *
    * git commit "add ${branch-name} token"
    * git push --set-upstream origin branch-name
+   * git checkout master
    */
   return await git
     .checkout(branch)
     .add("./*")
     .commit(`add ${branch} token`, "*")
-    .push("origin", branch, ["--set-upstream"]);
+    .push("origin", branch, ["--set-upstream"])
+    // Go back to master
+    .checkout("master"); 
 }
 
 //
