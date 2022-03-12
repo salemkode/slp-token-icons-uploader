@@ -5,29 +5,23 @@
   "main": "src/index.ts",
   "dependencies": {
     "@octokit/rest": "^18.12.0",
-    "@types/body-parser": "^1.19.2",
-    "@types/debug": "^4.1.7",
     "axios": "^0.26.0",
     "debug": "^4.3.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "express-validator": "^6.14.0",
     "multer": "^1.4.4",
     "ranidb": "git+https://github.com/waseeld/ranidb.git",
     "sharp": "^0.30.1",
     "simple-git": "^3.2.6",
     "socket.io": "^4.4.1",
-    "typescript": "^4.5.5",
-    "ws": "^8.5.0",
-    "yup": "^0.32.11"
+    "typescript": "^4.5.5"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/multer": "^1.4.7",
     "@types/node": "^16.11.25",
-    "@types/sharp": "^0.29.5",
-    "ts-node": "^10.5.0",
-    "nodemon": "^2.0.15"
+    "@types/debug": "^4.1.7",
+    "@types/sharp": "^0.29.5"
   },
   "scripts": {
     "start": "tsc && node build/index.js",

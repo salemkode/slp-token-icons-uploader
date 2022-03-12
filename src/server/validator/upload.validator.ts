@@ -1,9 +1,7 @@
-import { check, validationResult } from "express-validator";
 import { isFileSupport, isSquare } from "../model/photo.model";
 import fs from "fs";
 import axios, { AxiosResponse } from "axios";
 import { NextFunction, Request, Response } from "express";
-import { Multer } from "multer";
 
 //
 function hasWhiteSpace(string: string) {
