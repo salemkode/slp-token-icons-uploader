@@ -61,7 +61,7 @@ async function txidValidate(txid: string) {
   if (hasWhiteSpace(txid)) return "Txid field cannot contain blankspaces";
 
   // Check is (Token id) is exists
-  if (!fs.existsSync(`cache/repo/original/${txid}.png`)) {
+  if (fs.existsSync(`cache/repo/original/${txid}.png`)) {
     return "(Token id) already exists";
   }
 
