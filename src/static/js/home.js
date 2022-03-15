@@ -92,6 +92,7 @@ function toggleSection(name) {
 
 //
 function removeValidation() {
+  outputElement.innerHTML = "";
   document
     .querySelectorAll(`[aria-invalid=true]`)
     .forEach((element) => element.setAttribute("aria-invalid", ""));
