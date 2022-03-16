@@ -7,7 +7,9 @@ let Env: env = {
   REPO_OWNER: "slpkode",
   REPO_NAME: "slp-token-icons",
   PORT: "3000",
-  URL: "https://slp-icons.salemkode.com/"
+  URL: "https://slp-icons.salemkode.com/",
+  GITHUB_AUTH: "",
+  RE_CAPTCHA_KEY: ""
 };
 
 //
