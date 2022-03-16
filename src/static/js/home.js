@@ -29,6 +29,11 @@ form.onsubmit = async function (event) {
     let { processId, error } = respon_json;
 
     //
+    console.log(
+      "Res: ", respon_json
+    )
+
+    //
     if (typeof error === "object") {
       outputElement.innerHTML = "<h6>Solve the problems first</h6>";
 
