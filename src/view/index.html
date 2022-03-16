@@ -34,8 +34,8 @@
           id="message" cols="30" rows="2"></textarea>
 
         <!-- Icon input -->
-        <label for="icon">Icon of token</label>
-        <input type="file" name="icon" id="icon" />
+        <label for="icon">Icon of token ( Must be square )</label>
+        <input type="file" name="icon" id="icon" accept=".png,.jpg,.jpeg,.svg" />
 
         <!-- isTest checkbox -->
         <label for="isTest">
@@ -51,6 +51,10 @@
           data-sitekey="6Lfn0aseAAAAAPyMljyLN-dp7K3A_XwSJeRdS9Wc"></div>
 
         <!-- Submit-->
+        <small>
+          Icon will push to 
+          <a href="https://github.com/kosinusbch/slp-token-icons">https://github.com/kosinusbch/slp-token-icons</a>
+        </small>
         <button id="submit" onclick="submit" disabled>submit</button>
 
         <!-- Repo URL-->
