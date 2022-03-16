@@ -66,8 +66,8 @@ async function txidValidate(txid: string) {
   }
 
   // validate txid
-  let { data }: AxiosResponse<{ valid: null | boolean }> = await axios.get(
-    `https://api.fullstack.cash/v5/slp/validateTxid/${txid}`
+  let { data }: AxiosResponse<{ valid: boolean }> = await axios.get(
+    `https://rest.bch.actorforth.org/v2/slp/validateTxid/${txid}`
   );
 
   //
