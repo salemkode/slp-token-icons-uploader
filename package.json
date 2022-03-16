@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "dependencies": {
     "@octokit/rest": "^18.12.0",
-    "@salemkode/ranidb": "0.0.74",
+    "@salemkode/ranidb": "0.0.75",
     "axios": "^0.26.0",
     "debug": "^4.3.3",
     "dotenv": "^16.0.0",
