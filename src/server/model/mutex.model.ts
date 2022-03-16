@@ -14,6 +14,7 @@ interface imageProcess {
   name: string;
   txid: string;
   message: string;
+  isTest: boolean | unknown;
   file: Express.Multer.File;
   isDone?: boolean;
   _id?: string;
@@ -66,6 +67,7 @@ async function runProcess(git: SimpleGit) {
     image.name,
     image.txid,
     branchName,
+    image.isTest,
     image.message
   );
 

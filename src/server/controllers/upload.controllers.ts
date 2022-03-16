@@ -28,14 +28,14 @@ export async function uploadIcon(
   res: TypedResponse<successRes | errorsRes>
 ) {
   //
-  let { name, txid, message } = req.body;
+  let { name, txid, message, isTest } = req.body;
 
   //
   let app = req.app! as server;
   app.debug.action("New Image upload start");
 
   //
-  let processId = addProcess(git, { name, txid, message, file: req.file });
+  let processId = addProcess(git, { name, txid, message, isTest, file: req.file });
 
   //
   return res.json({

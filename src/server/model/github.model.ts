@@ -3,14 +3,15 @@ import Env from "./env.model";
 
 // Init github api
 const octokit = new Octokit({
-  auth: process.env.GITHUB_AUTH,
+  auth: Env.GITHUB_AUTH,
 });
 
 export async function createPullRequest(
   name: string, // Name of Token
   txid: string, // txid (Token id)
   branchName: string, // branch name to create PR from it
-  message?: string // Message from owner (optional)
+  isTest: unknown, // Push to 
+  message?: string, // Message from owner (optional)
 ) {
   // Remove space from start and end
   name = name.trim();
@@ -29,11 +30,14 @@ export async function createPullRequest(
     `This process was done in an automated through a website ${Env.URL}`
   );
 
+  // Select same repo if test
+  const owner = isTest ? Env.REPO_OWNER : Env.UPSTREAM_USER;
+
   // Push pull request to https://github.com/kosinusbch/slp-token-icons
   const response = await octokit.request(`POST /repos/{owner}/{repo}/pulls`, {
-    owner: process.env.UPSTREAM_USER,
+    owner,
     repo: "slp-token-icons",
-    head: "slpkode:" + branchName,
+    head: `${Env.REPO_OWNER}:${branchName}`,
     base: "master",
     title: `add ${name} coin token`,
     body: bodyArray.join("<br><br>"),

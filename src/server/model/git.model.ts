@@ -94,7 +94,7 @@ function getDefaultRemoteUrls() {
 
   // repo of user server has access to it
   // repo: https://{user}:{token}@github.com/{user}/{repo_name}.git
-  let origin = `https://${Env.REPO_OWNER}:${process.env.GITHUB_AUTH}@github.com/${Env.REPO_OWNER}/${Env.REPO_NAME}.git`;
+  let origin = `https://${Env.REPO_OWNER}:${Env.GITHUB_AUTH}@github.com/${Env.REPO_OWNER}/${Env.REPO_NAME}.git`;
 
   return {
     upstream,
