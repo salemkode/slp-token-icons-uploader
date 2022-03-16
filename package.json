@@ -5,12 +5,12 @@
   "main": "src/index.ts",
   "dependencies": {
     "@octokit/rest": "^18.12.0",
+    "@salemkode/ranidb": "0.0.74",
     "axios": "^0.26.0",
     "debug": "^4.3.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "multer": "^1.4.4",
-    "ranidb": "git+https://github.com/waseeld/ranidb.git",
     "sharp": "^0.30.1",
     "simple-git": "^3.2.6",
     "socket.io": "^4.4.1",

@@ -2,7 +2,7 @@ import { SimpleGit } from "simple-git";
 import { createBranch, createBranchName, pushBranch } from "./git.model";
 import { createPullRequest } from "./github.model";
 import { resizeImage, resizeOrigin } from "./photo.model";
-import ranidb from "ranidb";
+import ranidb from "@salemkode/ranidb";
 import * as socket from "./socket.model";
 
 let processes = new ranidb("db/processes.json");
