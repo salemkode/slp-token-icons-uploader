@@ -124,6 +124,7 @@ function initSocket(processId) {
       let linkElement = document.createElement("a");
       linkElement.href = processURL;
       linkElement.textContent = processURL;
+      linkElement.target = "blank"
 
       //
       completeSection.appendChild(linkElement);
