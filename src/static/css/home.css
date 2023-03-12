@@ -37,13 +37,7 @@ body,
   margin-top: 10px;
 }
 
-.form-container .padding-section {
-  height: 100%;
-  cursor: progress;
-  justify-content: space-between;
-}
-
-footer {
+.form-container .form footer {
   background: var(--secondary);
   margin-top: auto;
   box-shadow: 0 0 0 100vmax var(--secondary);
@@ -51,6 +45,12 @@ footer {
   padding: 10px 0px;
   text-align: left;
   display: flex;
+  justify-content: space-between;
+}
+
+.form-container .padding-section {
+  height: 100%;
+  cursor: progress;
   justify-content: space-between;
 }
 
